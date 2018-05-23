@@ -77,6 +77,7 @@ void ThreadPool::Shutdown()
 		infiniteTimer.cancel();
 		for (auto& thread : threads)
 		{
+			this->io->service.stop();
 			thread->join();
 		}
 	}
